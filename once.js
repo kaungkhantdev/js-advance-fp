@@ -1,0 +1,39 @@
+/* let done = false;
+function payment()
+{
+    if (!done) {
+        console.log('Payment');
+        done = true;
+    }
+} */
+
+function payment(orderId)
+{
+    console.log('Payment ',orderId);
+}
+
+function order()
+{
+    console.log('Order')
+}
+
+function once(fn)
+{
+    let done = false
+    return function(...args){
+        if (!done)
+        {
+            fn(...args)
+            done = true;
+        }
+    }
+}
+
+
+payment = once(payment);
+payment('122')
+payment('1223');
+
+order = once(order);
+order();
+order();
